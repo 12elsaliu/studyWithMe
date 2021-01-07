@@ -19,11 +19,14 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Pause } from './src/pause';
+import { Start } from './src/start';
+import { Time } from './src/timer';
 
 const App = () => {
   return (
-    <Pause />
+    <Start />
+    // <Time />
+
   );
 };
 
