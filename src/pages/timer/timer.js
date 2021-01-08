@@ -3,16 +3,24 @@ import {
   StyleSheet, View, TouchableOpacity, Text,
 } from 'react-native';
 import { Timer, FlipNumber } from 'react-native-flip-timer';
+import { TodaySummary } from '../../components/todaySummary';
 
 export class Time extends React.Component {
+  handleStopButtonPress = () => {
+    this.props.onStop();
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Timer time={0} />
-        <TouchableOpacity style={styles.button} onPress={this.props.play}>
-          <Text style={styles.text}>Pause</Text>
-        </TouchableOpacity>
-      </View>
+      <>
+        <View style={styles.container}>
+          <Timer time={0} play={true} />
+          <TouchableOpacity style={styles.button} onPress={this.handleStopButtonPress}>
+            <Text style={styles.text}>Pause</Text>
+          </TouchableOpacity>
+        </View>
+
+      </>
     );
   }
 }

@@ -35,15 +35,17 @@ export class Start extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={this.props.start}>
-          <Image
-            source={image}
-            style={styles.pauseButton}
-          />
-        </TouchableOpacity>
+      <>
+        <View style={styles.container}>
+          <TouchableOpacity onPress={this.props.start}>
+            <Image
+              source={image}
+              style={styles.pauseButton}
+            />
+          </TouchableOpacity>
+        </View>
 
-      </View>
+      </>
     )
   }
 }

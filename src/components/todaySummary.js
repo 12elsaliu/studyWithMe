@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 export class TodaySummary extends React.Component {
 
   render() {
     return (
       <View style={styles.container}>
-
+        <Text style={styles.text}>Stayed focused for  {this.props.duration}</Text>
       </View>
     )
   }
@@ -14,13 +14,16 @@ export class TodaySummary extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'white',
+    display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    position: 'relative',
-    bottom: 50,
-    backgroundColor: 'blue'
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 100,
+    right: 10,
+    backgroundColor: 'blue',
+    borderRadius: 15,
+    height: 50,
+    width: 300
   },
   button: {
     height: 40,

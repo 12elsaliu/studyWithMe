@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/art": "^1.2.0",
+    "luxon": "^1.25.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-flip-timer": "0.0.5",

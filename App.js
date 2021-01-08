@@ -21,34 +21,53 @@ import {
 
 import { Start } from './src/pages/start/start';
 import { Time } from './src/pages/timer/timer';
+import { TodaySummary } from './src/components/todaySummary';
+import Duration from 'luxon/src/duration.js'
+
+function formatFocusedToday(ms) {
+  return Duration.fromMillis(ms).toFormat('hh:mm:ss');
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      timerStarted: false
+      timerStartedAt: null,
+      timerStarted: false,
+      focusedToday: 0
     };
-    this.handleClickStart = this.handleClickStart.bind(this);
   };
 
-  handleClickStart() {
-    this.setState({ timerStarted: !this.state.timerStarted })
-    console.log(this.state.timerStarted)
-      ;
+  handleClickStop = () => {
+    const timerDuration = new Date() - this.state.timerStartedAt;
+
+    this.setState({
+      timerStarted: false,
+      timerStartedAt: null,
+      focusedToday: this.state.focusedToday + timerDuration
+    });
+  }
+
+  handleClickStart = () => {
+    this.setState({
+      timerStarted: true,
+      timerStartedAt: new Date()
+    })
   };
 
   render() {
     if (this.state.timerStarted) {
       return (
         <>
-          <Time play={this.handleClickStart} />
+          <Time onStop={this.handleClickStop} />
+          <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
         </>
       )
     } else {
       return (
         <>
           <Start start={this.handleClickStart} />
-
+          <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
         </>
       );
     }
