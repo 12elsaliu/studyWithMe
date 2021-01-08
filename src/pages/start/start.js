@@ -1,7 +1,8 @@
 import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import image from './start.jpg';
-import Time from './timer';
+import { TodaySummary } from '../../components/todaySummary';
+
 
 const styles = StyleSheet.create(
   {
@@ -26,22 +27,16 @@ export class Start extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isStartButtonVisible: true
+      isStartButtonVisible: true,
     };
-    this.onStartButtonClick = this.onStartButtonClick.bind(this);
   }
 
-  onStartButtonClick() {
-    this.setState({
-      isStartButtonVisible: false
-    });
 
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity onPress={this.onStartButtonClick}>
+        <TouchableOpacity onPress={this.props.start}>
           <Image
             source={image}
             style={styles.pauseButton}

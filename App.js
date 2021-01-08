@@ -8,7 +8,7 @@
 
 import React from 'react';
 import {
-  StyleSheet,
+  StyleSheet, View
 } from 'react-native';
 
 import {
@@ -19,16 +19,41 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Start } from './src/start';
-import { Time } from './src/timer';
+import { Start } from './src/pages/start/start';
+import { Time } from './src/pages/timer/timer';
 
-const App = () => {
-  return (
-    <Start />
-    // <Time />
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      timerStarted: false
+    };
+    this.handleClickStart = this.handleClickStart.bind(this);
+  };
 
-  );
-};
+  handleClickStart() {
+    this.setState({ timerStarted: !this.state.timerStarted })
+    console.log(this.state.timerStarted)
+      ;
+  };
+
+  render() {
+    if (this.state.timerStarted) {
+      return (
+        <>
+          <Time play={this.handleClickStart} />
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Start start={this.handleClickStart} />
+
+        </>
+      );
+    }
+  };
+}
 
 const styles = StyleSheet.create({
   scrollView: {
