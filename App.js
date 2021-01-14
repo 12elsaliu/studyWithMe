@@ -22,10 +22,16 @@ import {
 import { Start } from './src/pages/start/start';
 import { Time } from './src/pages/timer/timer';
 import { TodaySummary } from './src/components/todaySummary';
-import Duration from 'luxon/src/duration.js'
+import Duration from 'luxon/src/duration.js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function formatFocusedToday(ms) {
   return Duration.fromMillis(ms).toFormat('hh:mm:ss');
+}
+
+
+function formatDate(date) {
+  return date.toJSON().slice(0, 10);
 }
 
 class App extends React.Component {
@@ -33,30 +39,56 @@ class App extends React.Component {
     super(props);
     this.state = {
       timerStartedAt: null,
-      timerStarted: false,
       focusedToday: 0
     };
   };
 
-  handleClickStop = () => {
+  readCurrentDuration = async () => {
+    const currentDate = formatDate(new Date());
+    const todayFocus = await AsyncStorage.getItem(currentDate);
+
+    if (!todayFocus) {
+      return 0;
+    }
+
+    return Number.parseInt(todayFocus, 10);
+  };
+
+
+  addToCurrentDuration = async (value) => {
+    const currentDuration = await this.readCurrentDuration();
+    const updatedDuration = currentDuration + value;
+
+    const currentDate = formatDate(new Date());
+
+    await AsyncStorage.setItem(currentDate, String(updatedDuration));
+    return updatedDuration;
+  }
+
+  handleClickStop = async () => {
     const timerDuration = new Date() - this.state.timerStartedAt;
+    const focusedToday = await this.addToCurrentDuration(timerDuration);
 
     this.setState({
-      timerStarted: false,
       timerStartedAt: null,
-      focusedToday: this.state.focusedToday + timerDuration
+      focusedToday
     });
   }
 
   handleClickStart = () => {
     this.setState({
-      timerStarted: true,
       timerStartedAt: new Date()
     })
   };
 
+  async componentDidMount() {
+    const focusedToday = await this.readCurrentDuration();
+
+    this.setState({ focusedToday })
+  }
+
   render() {
-    if (this.state.timerStarted) {
+    if (this.state.timerStartedAt) {
       return (
         <>
           <Time onStop={this.handleClickStop} />

@@ -6,7 +6,7 @@ export class TodaySummary extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Stayed focused for  {this.props.duration}</Text>
+        <Text style={styles.text}>Today Focused {this.props.duration}</Text>
       </View>
     )
   }
@@ -20,8 +20,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 100,
     right: 10,
-    backgroundColor: 'blue',
-    borderRadius: 15,
+    borderRadius: 5,
     height: 50,
     width: 300
   },
@@ -33,8 +32,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: 'bold',
-    color: '#cccccc',
+    color: 'black',
   },
 });
