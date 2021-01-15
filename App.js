@@ -24,6 +24,7 @@ import { Time } from './src/pages/timer/timer';
 import { TodaySummary } from './src/components/todaySummary';
 import Duration from 'luxon/src/duration.js';
 import { readCurrentDuration, addToCurrentDuration } from './src/storage';
+import { SevenDay } from './src/pages/charts/sevenDay';
 
 function formatFocusedToday(ms) {
   return Duration.fromMillis(ms).toFormat('hh:mm:ss');
@@ -67,8 +68,9 @@ class App extends React.Component {
 
     return (
       <>
-        {mainComponent}
-        <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
+        {/* {mainComponent}
+        <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} /> */}
+        <SevenDay />
       </>
     )
   };

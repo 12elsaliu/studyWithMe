@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import image from './start.jpg';
-import { TodaySummary } from '../../components/todaySummary';
+
 
 
 const styles = StyleSheet.create(

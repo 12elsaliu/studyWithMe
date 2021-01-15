@@ -3,7 +3,6 @@ import {
   StyleSheet, View, TouchableOpacity, Text,
 } from 'react-native';
 import { Timer, FlipNumber } from 'react-native-flip-timer';
-import { TodaySummary } from '../../components/todaySummary';
 
 export class Time extends React.Component {
   handleStopButtonPress = () => {
