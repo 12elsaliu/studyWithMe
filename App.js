@@ -35,7 +35,8 @@ class App extends React.Component {
 
   state = {
     timerStartedAt: null,
-    focusedToday: 0
+    focusedToday: 0,
+    chartPage: null
   };
 
   handleClickStop = async () => {
@@ -58,22 +59,47 @@ class App extends React.Component {
     const focusedToday = await readCurrentDuration();
 
     this.setState({ focusedToday })
+  };
+
+  handleClickChartEntry = () => {
+    console.log('check')
+    this.setState({
+      chartPage: true
+    })
+  };
+
+  handleClickChartExit = () => {
+    this.setState({
+      chartPage: null
+    })
   }
 
+
   render() {
+    const timerStartedPage = <>
+      <Time onStop={this.handleClickStop} />
+      <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
+    </>
 
-    const mainComponent = this.state.timerStartedAt
-      ? <Time onStop={this.handleClickStop} />
-      : <Start start={this.handleClickStart} />
+    const timerStoppedPage = <>
+      <Start start={this.handleClickStart} goToChartPage={this.handleClickChartEntry} />
+      <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
+    </>
 
-    return (
-      <>
-        {/* {mainComponent}
-        <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} /> */}
-        <SevenDay />
-      </>
-    )
-  };
+    const chartPage = <>
+      <SevenDay backToStartPage={this.handleClickChartExit} />
+    </>
+
+    if (this.state.chartPage) {
+      return chartPage
+    }
+
+    if (this.state.timerStartedAt) {
+      return timerStartedPage
+    }
+
+    return timerStoppedPage
+  }
 }
 
 const styles = StyleSheet.create({

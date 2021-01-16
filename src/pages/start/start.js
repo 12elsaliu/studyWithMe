@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
-import image from './start.jpg';
+import image from '../../images/start.jpg';
+import entry from '../../images/chartEntry.jpg';
 
 
 
@@ -19,6 +20,21 @@ const styles = StyleSheet.create(
       bottom: 0,
       justifyContent: 'center',
       alignItems: 'center',
+    },
+
+    entryButton: {
+      position: 'absolute',
+      width: 40,
+      height: 40,
+      top: 40,
+      right: 10,
+
+
+    },
+
+    entryContainer: {
+      height: 30,
+      zIndex: 100
     }
   }
 );
@@ -31,11 +47,20 @@ export class Start extends React.Component {
     };
   }
 
-
-
   render() {
+    console.log(this.props.goToChartPage)
     return (
       <>
+        <View style={styles.entryContainer}>
+          < TouchableOpacity onPress={this.props.goToChartPage}>
+            <Image
+              source={entry}
+              style={styles.entryButton}
+            />
+          </TouchableOpacity>
+        </View>
+
+
         <View style={styles.container}>
           <TouchableOpacity onPress={this.props.start}>
             <Image

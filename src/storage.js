@@ -45,3 +45,5 @@ export const loadHistoryDuration = async (numberOfDays) => {
   return { daysList, durationList }
 
 }
+
+loadHistoryDuration(7).then((data) => { console.log(data) })

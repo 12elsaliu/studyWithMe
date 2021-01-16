@@ -1,7 +1,10 @@
 import { loadHistoryDuration } from '../../storage';
 import { BarChart } from 'react-native-chart-kit';
 import React from 'react';
-import { Dimensions, View, Text, StyleSheet } from "react-native";
+import { Dimensions, View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import image from '../../images/exit.png';
+import leftArrow from '../../images/leftArrow.png';
+import rightArrow from '../../images/rightArrow.png';
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -29,13 +32,63 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 17,
     fontWeight: 'bold',
-    color: 'black',
+    color: 'black'
   },
+  exitButton: {
+    width: 35,
+    height: 35,
+    top: 35,
+    left: 10,
+    zIndex: 100
+  },
+
+  leftArrow: {
+    width: 20,
+    height: 20,
+    position: 'relative',
+    right: 25
+  },
+
+  rightArrow: {
+    width: 20,
+    height: 20,
+    position: 'relative',
+    left: 25
+  },
+
+  exitContainer: {
+    position: 'absolute',
+    top: 7,
+    left: 10
+  },
+
+  chartContainer: {
+    position: 'relative',
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  wholeContainer: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center'
+  },
+
+  arrowContainer: {
+    position: 'relative',
+    flexDirection: 'row',
+    bottom: 0,
+    justifyContent: 'center'
+
+
+  }
 });
 
 export class SevenDay extends React.Component {
   state = {
-    daysList: ["January", "February", "March", "April", "May", "June"],
+    daysList: [],
     durationList: []
   }
 
@@ -50,25 +103,59 @@ export class SevenDay extends React.Component {
 
   render() {
     const data = {
-      labels: this.state.daysList,
+      labels: this.state.daysList.map(date => date.slice(5, 10)),
       datasets: [
         {
           data: this.state.durationList
         }
       ]
     };
-
+    console.log(data)
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Seven Day Summary (hours)</Text>
-        <BarChart
-          data={data}
-          width={screenWidth}
-          height={220}
-          // yAxisLabel=""
-          chartConfig={chartConfig}
-          verticalLabelRotation={45}
-        />
+      <View style={styles.wholeContainer}>
+        <View style={styles.exitContainer} >
+          < TouchableOpacity onPress={this.props.backToStartPage}>
+            <Image
+              source={image}
+              style={styles.exitButton}
+            />
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.arrowContainer}>
+          <Image
+            source={leftArrow}
+            style={styles.leftArrow}
+          />
+
+          <Image
+            source={rightArrow}
+            style={styles.rightArrow}
+          />
+        </View>
+
+        <View style={styles.chartContainer}>
+
+          <Text style={styles.text}>Seven Day Summary (hours)</Text>
+          <BarChart
+            data={data}
+            width={screenWidth}
+            height={220}
+            // yAxisLabel=""
+            chartConfig={chartConfig}
+            verticalLabelRotation={30}
+          >
+            <Image
+              source={leftArrow}
+              style={styles.leftArrow}
+            />
+
+            <Image
+              source={rightArrow}
+              style={styles.rightArrow}
+            />
+          </BarChart>
+        </View>
       </View>
     )
   }
