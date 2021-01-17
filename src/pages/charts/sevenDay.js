@@ -89,16 +89,39 @@ const styles = StyleSheet.create({
 export class SevenDay extends React.Component {
   state = {
     daysList: [],
-    durationList: []
+    durationList: [],
+    week: 0
   }
 
   async componentDidMount() {
-    const { daysList, durationList } = await loadHistoryDuration(7);
+    const { daysList, durationList } = await loadHistoryDuration(7, this.state.week);
     this.setState({
       daysList,
-      durationList
+      durationList,
     })
 
+  }
+
+  handleBackWeek = async () => {
+    let backWeek = this.state.week + 1;
+    const { daysList, durationList } = await loadHistoryDuration(7, backWeek);
+    this.setState({
+      daysList,
+      durationList,
+      week: backWeek
+    })
+  }
+
+  handleForwardWeek = async () => {
+    if (this.state.week > 0) {
+      let forwardWeek = this.state.week - 1
+      const { daysList, durationList } = await loadHistoryDuration(7, forwardWeek);
+      this.setState({
+        daysList,
+        durationList,
+        week: forwardWeek
+      })
+    }
   }
 
   render() {
@@ -123,20 +146,24 @@ export class SevenDay extends React.Component {
         </View>
 
         <View style={styles.arrowContainer}>
-          <Image
-            source={leftArrow}
-            style={styles.leftArrow}
-          />
+          <TouchableOpacity onPress={this.handleBackWeek}>
+            <Image
+              source={leftArrow}
+              style={styles.leftArrow}
+            />
+          </TouchableOpacity>
 
-          <Image
-            source={rightArrow}
-            style={styles.rightArrow}
-          />
+          <TouchableOpacity onPress={this.handleForwardWeek}>
+            <Image
+              source={rightArrow}
+              style={styles.rightArrow}
+            />
+          </TouchableOpacity>
         </View>
 
         <View style={styles.chartContainer}>
 
-          <Text style={styles.text}>Seven Day Summary (hours)</Text>
+          <Text style={styles.text}>7 Day Summary (hours)</Text>
           <BarChart
             data={data}
             width={screenWidth}

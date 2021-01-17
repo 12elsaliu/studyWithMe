@@ -27,9 +27,9 @@ export const addToCurrentDuration = async (value) => {
   return updatedDuration;
 };
 
-export const loadHistoryDuration = async (numberOfDays) => {
+export const loadHistoryDuration = async (numberOfDays, weekBack) => {
 
-  const daysList = previousDates(numberOfDays);
+  const daysList = previousDates(numberOfDays, weekBack);
   let durationList = [];
   for (let i = 0; i < daysList.length; i++) {
     const todayFocus = await AsyncStorage.getItem(daysList[i]);
@@ -46,4 +46,4 @@ export const loadHistoryDuration = async (numberOfDays) => {
 
 }
 
-loadHistoryDuration(7).then((data) => { console.log(data) })
+// loadHistoryDuration(7, 1).then((data) => { console.log(data, 'here') },)
