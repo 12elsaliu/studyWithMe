@@ -5,12 +5,9 @@ const now = DateTime.fromJSDate(new Date())
 export const previousDates = (number, weekBack) => {
   let datesView = [];
   for (let i = 0 + number * weekBack; i < number + number * weekBack; i++) {
-    let thisDay = now.minus({ days: i }).toString().slice(0, 10);
+    let thisDay = now.minus({ days: i }).toJSDate()
     datesView.push(thisDay);
   }
   return datesView
 };
 
-
-
-// console.log(previousDates(7, 1), 'here')

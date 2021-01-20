@@ -23,7 +23,7 @@ import { Start } from './src/pages/start/start';
 import { Time } from './src/pages/timer/timer';
 import { TodaySummary } from './src/components/todaySummary';
 import Duration from 'luxon/src/duration.js';
-import { readCurrentDuration, addToCurrentDuration } from './src/storage';
+import { readCurrentDuration, addToCurrentDuration } from './src/service';
 import { SevenDay } from './src/pages/charts/sevenDay';
 
 function formatFocusedToday(ms) {
@@ -62,7 +62,6 @@ class App extends React.Component {
   };
 
   handleClickChartEntry = () => {
-    console.log('check')
     this.setState({
       chartPage: true
     })

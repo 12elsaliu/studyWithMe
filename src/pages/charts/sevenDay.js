@@ -1,10 +1,11 @@
-import { loadHistoryDuration } from '../../storage';
+import { loadHistoryDuration } from '../../service';
 import { BarChart } from 'react-native-chart-kit';
 import React from 'react';
 import { Dimensions, View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import image from '../../images/exit.png';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
+import { DateTime } from 'luxon';
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -126,14 +127,14 @@ export class SevenDay extends React.Component {
 
   render() {
     const data = {
-      labels: this.state.daysList.map(date => date.slice(5, 10)),
+      labels: this.state.daysList.map(date => DateTime.fromJSDate(date).toFormat('LL-dd')),
+
       datasets: [
         {
           data: this.state.durationList
         }
       ]
     };
-    console.log(data)
     return (
       <View style={styles.wholeContainer}>
         <View style={styles.exitContainer} >

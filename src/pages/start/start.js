@@ -48,7 +48,7 @@ export class Start extends React.Component {
   }
 
   render() {
-    console.log(this.props.goToChartPage)
+
     return (
       <>
         <View style={styles.entryContainer}>
