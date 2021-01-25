@@ -5,6 +5,7 @@ const formatDate = date => DateTime.fromJSDate(date).toFormat('yyyy-LL-dd')
 
 export async function readDuration(date) {
   const duration = await AsyncStorage.getItem(formatDate(date));
+  console.log(duration, date)
 
   if (!duration) {
     return 0;
@@ -19,4 +20,5 @@ export async function writeDuration(date, duration) {
 
 
 };
+
 

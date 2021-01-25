@@ -1,12 +1,20 @@
 import React from 'react';
 import {
-  StyleSheet, View, TouchableOpacity, Text,
+  StyleSheet, View, TouchableOpacity, Text, AppState
 } from 'react-native';
 import { Timer, FlipNumber } from 'react-native-flip-timer';
 
 export class Time extends React.Component {
   handleStopButtonPress = () => {
     this.props.onStop();
+  }
+
+  componentWillUnmount() {
+    AppState.removeEventListener('change', this.handleStopButtonPress);
+  }
+
+  componentDidMount() {
+    AppState.addEventListener('change', this.handleStopButtonPress);
   }
 
   render() {

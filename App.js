@@ -25,6 +25,7 @@ import { TodaySummary } from './src/components/todaySummary';
 import Duration from 'luxon/src/duration.js';
 import { readCurrentDuration, addToCurrentDuration } from './src/service';
 import { SevenDay } from './src/pages/charts/sevenDay';
+import KeepAwake from 'react-native-keep-awake';
 
 function formatFocusedToday(ms) {
   return Duration.fromMillis(ms).toFormat('hh:mm:ss');
@@ -52,7 +53,8 @@ class App extends React.Component {
   handleClickStart = () => {
     this.setState({
       timerStartedAt: new Date()
-    })
+    });
+    KeepAwake.activate();
   };
 
   async componentDidMount() {

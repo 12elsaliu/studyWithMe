@@ -17,6 +17,7 @@
     "react-native": "0.63.4",
     "react-native-chart-kit": "^6.10.0",
     "react-native-flip-timer": "0.0.5",
+    "react-native-keep-awake": "^4.0.0",
     "react-native-progress-timer": "^1.0.1",
     "react-native-stopwatch-timer": "0.0.21",
     "react-native-svg": "^12.1.0"
