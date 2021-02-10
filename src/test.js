@@ -14,4 +14,4 @@ const getDatesList = (startDate, endDate) => {
 
 }
 
-console.log(getDatesList(new Date(), new Date('2020-12-04')))
+// console.log(getDatesList(new Date(), new Date('2020-12-04'))

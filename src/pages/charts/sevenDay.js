@@ -95,7 +95,7 @@ export class SevenDay extends React.Component {
   }
 
   async componentDidMount() {
-    const { daysList, durationList } = await loadHistoryDuration(7, this.state.week);
+    const { daysList, durationList } = await loadHistoryDuration(this.props.userId, 7, this.state.week);
     this.setState({
       daysList,
       durationList,
@@ -105,7 +105,7 @@ export class SevenDay extends React.Component {
 
   handleBackWeek = async () => {
     let backWeek = this.state.week + 1;
-    const { daysList, durationList } = await loadHistoryDuration(7, backWeek);
+    const { daysList, durationList } = await loadHistoryDuration(this.props.userId, 7, backWeek);
     this.setState({
       daysList,
       durationList,
@@ -116,7 +116,7 @@ export class SevenDay extends React.Component {
   handleForwardWeek = async () => {
     if (this.state.week > 0) {
       let forwardWeek = this.state.week - 1
-      const { daysList, durationList } = await loadHistoryDuration(7, forwardWeek);
+      const { daysList, durationList } = await loadHistoryDuration(this.props.userId, 7, forwardWeek);
       this.setState({
         daysList,
         durationList,
@@ -171,7 +171,7 @@ export class SevenDay extends React.Component {
             height={220}
             // yAxisLabel=""
             chartConfig={chartConfig}
-            verticalLabelRotation={30}
+            verticalLabelRotation={20}
           >
             <Image
               source={leftArrow}

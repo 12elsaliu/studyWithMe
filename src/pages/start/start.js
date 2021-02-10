@@ -1,7 +1,9 @@
 import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import image from '../../images/start.jpg';
-import entry from '../../images/chartEntry.jpg';
+import setting from '../../images/setting.png';
+
+
 
 
 
@@ -22,7 +24,7 @@ const styles = StyleSheet.create(
       alignItems: 'center',
     },
 
-    entryButton: {
+    settingButton: {
       position: 'absolute',
       width: 40,
       height: 40,
@@ -52,14 +54,13 @@ export class Start extends React.Component {
     return (
       <>
         <View style={styles.entryContainer}>
-          < TouchableOpacity onPress={this.props.goToChartPage}>
+          < TouchableOpacity onPress={this.props.goToSettingPage}>
             <Image
-              source={entry}
-              style={styles.entryButton}
+              source={setting}
+              style={styles.settingButton}
             />
           </TouchableOpacity>
         </View>
-
 
         <View style={styles.container}>
           <TouchableOpacity onPress={this.props.start}>
@@ -69,6 +70,7 @@ export class Start extends React.Component {
             />
           </TouchableOpacity>
         </View>
+
 
       </>
     )

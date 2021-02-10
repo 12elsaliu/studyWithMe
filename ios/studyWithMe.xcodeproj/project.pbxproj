@@ -20,6 +20,10 @@
 		2DCD954D1E0B4F2C00145EB5 /* studyWithMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* studyWithMeTests.m */; };
 		399B505924EF2AA625236C99 /* libPods-studyWithMe-studyWithMeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 814EBEED629A62992F165336 /* libPods-studyWithMe-studyWithMeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		88A734C925D092A300C3A7D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A734C825D092A300C3A7D0 /* GoogleService-Info.plist */; };
+		88A734CA25D092A300C3A7D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A734C825D092A300C3A7D0 /* GoogleService-Info.plist */; };
+		88A734CB25D092A300C3A7D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A734C825D092A300C3A7D0 /* GoogleService-Info.plist */; };
+		88A734CC25D092A300C3A7D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88A734C825D092A300C3A7D0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +67,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = studyWithMe/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844242B6FAAF67F2ADB946DF /* Pods-studyWithMe-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-studyWithMe-tvOS.release.xcconfig"; path = "Target Support Files/Pods-studyWithMe-tvOS/Pods-studyWithMe-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		87929086C43253F9CEF09EC3 /* Pods-studyWithMe-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-studyWithMe-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-studyWithMe-tvOSTests/Pods-studyWithMe-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		88A734C825D092A300C3A7D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C4219B039EC958B1FA79A8FF /* libPods-studyWithMe-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-studyWithMe-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD1AB3C78B7E252B9583F05E /* libPods-studyWithMe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-studyWithMe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -125,6 +130,7 @@
 		13B07FAE1A68108700A75B9A /* studyWithMe */ = {
 			isa = PBXGroup;
 			children = (
+				88A734C825D092A300C3A7D0 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -194,7 +200,6 @@
 				87929086C43253F9CEF09EC3 /* Pods-studyWithMe-tvOSTests.debug.xcconfig */,
 				7932E9BD4EC3B10AF1CE9F50 /* Pods-studyWithMe-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -252,6 +257,7 @@
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
 				2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */,
+				E7C4663FC8A844EBE93855D4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -333,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A734CA25D092A300C3A7D0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +349,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				88A734C925D092A300C3A7D0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
+				88A734CB25D092A300C3A7D0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88A734CC25D092A300C3A7D0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,10 +394,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-studyWithMe/Pods-studyWithMe-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,10 +450,12 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-studyWithMe-studyWithMeTests/Pods-studyWithMe-studyWithMeTests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +505,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7C4663FC8A844EBE93855D4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-studyWithMe-tvOS/Pods-studyWithMe-tvOS-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-studyWithMe-tvOS/Pods-studyWithMe-tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ED3C15913A080765230976AF /* [CP] Check Pods Manifest.lock */ = {
@@ -664,7 +696,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.studyWithMe;
 				PRODUCT_NAME = studyWithMe;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -686,7 +718,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.studyWithMe;
 				PRODUCT_NAME = studyWithMe;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";

@@ -8,7 +8,7 @@
 
 import React from 'react';
 import {
-  StyleSheet, View
+  StyleSheet, View, Text
 } from 'react-native';
 
 import {
@@ -26,6 +26,9 @@ import Duration from 'luxon/src/duration.js';
 import { readCurrentDuration, addToCurrentDuration } from './src/service';
 import { SevenDay } from './src/pages/charts/sevenDay';
 import KeepAwake from 'react-native-keep-awake';
+import { SignIn } from './src/pages/signIn/signInPage';
+import { Setting } from './src/pages/setting';
+
 
 function formatFocusedToday(ms) {
   return Duration.fromMillis(ms).toFormat('hh:mm:ss');
@@ -37,12 +40,15 @@ class App extends React.Component {
   state = {
     timerStartedAt: null,
     focusedToday: 0,
-    chartPage: null
+    chartPage: null,
+    signedIn: false,
+    settingPage: null,
+    userId: undefined
   };
 
   handleClickStop = async () => {
     const timerDuration = new Date() - this.state.timerStartedAt;
-    const focusedToday = await addToCurrentDuration(timerDuration);
+    const focusedToday = await addToCurrentDuration(this.state.userId, timerDuration);
 
     this.setState({
       timerStartedAt: null,
@@ -75,31 +81,86 @@ class App extends React.Component {
     })
   }
 
+  handleSignin = (userInfo) => {
+    this.setState({
+      signedIn: true,
+      userId: userInfo.user.id
+    })
+  }
+
+  handleClickSettingPage = () => {
+    this.setState({
+      settingPage: true
+    })
+  }
+
+  handleSettingExit = () => {
+    this.setState({
+      settingPage: null
+    })
+  }
+
+  handleSignOut = () => {
+    this.setState({
+      userId: undefined
+    })
+  }
 
   render() {
-    const timerStartedPage = <>
-      <Time onStop={this.handleClickStop} />
-      <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
-    </>
+    const mainFunction = () => {
+      const timerStartedPage = <>
+        <Time onStop={this.handleClickStop} />
+        <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
+      </>
 
-    const timerStoppedPage = <>
-      <Start start={this.handleClickStart} goToChartPage={this.handleClickChartEntry} />
-      <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
-    </>
+      const timerStoppedPage = <>
+        <Start start={this.handleClickStart} goToSettingPage={this.handleClickSettingPage} />
+        <TodaySummary duration={formatFocusedToday(this.state.focusedToday)} />
+      </>
 
-    const chartPage = <>
-      <SevenDay backToStartPage={this.handleClickChartExit} />
-    </>
+      const chartPage = <>
+        <SevenDay backToStartPage={this.handleClickChartExit} userId={this.state.userId} />
+      </>
 
-    if (this.state.chartPage) {
-      return chartPage
+      const settingPage = <>
+        <Setting
+          backToStartPage={this.handleSettingExit}
+          goToChartPage={this.handleClickChartEntry}
+          isSignOut={this.handleSignOut} />
+      </>
+
+
+      if (this.state.chartPage) {
+        return chartPage
+      }
+
+      if (this.state.timerStartedAt) {
+        return timerStartedPage
+      }
+
+      if (this.state.settingPage) {
+        return settingPage
+      }
+
+      return timerStoppedPage
     }
 
-    if (this.state.timerStartedAt) {
-      return timerStartedPage
+
+    if (!this.state.signedIn) {
+      return (
+        <>
+          <SignIn handleSignin={this.handleSignin} />
+
+        </>
+      )
+    } else {
+      return (
+        <>
+          { mainFunction()}
+        </>
+      )
     }
 
-    return timerStoppedPage
   }
 }
 
