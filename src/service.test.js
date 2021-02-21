@@ -1,4 +1,5 @@
 import { Service } from './service.js'
+
 const storage = {
   writeDuration() {
 
@@ -10,34 +11,37 @@ const storage = {
 
 const service = new Service(storage)
 
-//test method addToCurrentDuration
-const resultDuration = async () => {
-  const duration = await service.addToCurrentDuration(500);
+describe('Service layer', () => {
+  test('addToCurrentDuration method', async () => {
+    const duration = await service.addToCurrentDuration(500);
 
-  if (duration !== 800500) {
-    throw Error('error with addToCurrentDuration function')
-  }
+    expect(duration).toBe(800500);
 
-}
-resultDuration()
+    // if (duration !== 800500) {
+    //   throw Error('error with addToCurrentDuration function')
+    // }
+  })
 
-//test method loadHistory
-const history = async () => {
-  const gotHistory = await service.loadHistoryDuration(7, 1)
-  const expectedHistory = {
-    durationList: [
+  test('loadHistoryDuration method', async () => {
+    const gotHistory = await service.loadHistoryDuration(7, 1)
+    const expectedDurationList = [
       '0.2', '0.2',
       '0.2', '0.2',
       '0.2', '0.2',
       '0.2'
     ]
-  }
-  // console.log(gotHistory)
-  // console.log(expectedHistory)
-  if (String(gotHistory.durationList) !== String(expectedHistory.durationList)) {
-    throw Error('Error with loadHistoryDuration function')
-  }
-}
-history()
-//|| gotHistory.daysList.length !== 7
 
+    expect(gotHistory.durationList).toEqual(expectedDurationList)
+    expect(gotHistory.daysList).toHaveLength(7)
+
+    gotHistory.daysList.forEach(day => {
+      expect(day).toEqual(expect.any(Date))
+    })
+
+    // console.log(gotHistory)
+    // console.log(expectedHistory)
+    // if (String(gotHistory.durationList) !== String(expectedHistory.durationList)) {
+    //   throw Error('Error with loadHistoryDuration function')
+    // }
+  })
+})
