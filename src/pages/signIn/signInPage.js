@@ -14,6 +14,7 @@ export class SignIn extends React.Component {
   }
 
   signIn = async (silent) => {
+    console.log('----->', silent)
     try {
       // await GoogleSignin.hasPlayServices();
       const userInfo = silent
@@ -22,6 +23,10 @@ export class SignIn extends React.Component {
       this.setState({ userInfo });
       this.props.handleSignin(userInfo)//pass value to the parent
     } catch (error) {
+      console.log({ silent, error });
+      if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+
+      }
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
@@ -47,7 +52,7 @@ export class SignIn extends React.Component {
         style={{ width: 192, height: 48, top: '60%', left: '25%' }}
         size={GoogleSigninButton.Size.Wide}
         color={GoogleSigninButton.Color.Dark}
-        onPress={this.signIn}
+        onPress={() => this.signIn(false)}
         disabled={this.state.isSigninInProgress} />
     )
 

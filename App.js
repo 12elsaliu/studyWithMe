@@ -23,11 +23,12 @@ import { Start } from './src/pages/start/start';
 import { Time } from './src/pages/timer/timer';
 import { TodaySummary } from './src/components/todaySummary';
 import Duration from 'luxon/src/duration.js';
-import { readCurrentDuration, addToCurrentDuration } from './src/service';
+import { Service } from './src/service';
 import { SevenDay } from './src/pages/charts/sevenDay';
 import KeepAwake from 'react-native-keep-awake';
 import { SignIn } from './src/pages/signIn/signInPage';
 import { Setting } from './src/pages/setting';
+import { Storage } from './src/storage';
 
 
 function formatFocusedToday(ms) {
@@ -48,7 +49,7 @@ class App extends React.Component {
 
   handleClickStop = async () => {
     const timerDuration = new Date() - this.state.timerStartedAt;
-    const focusedToday = await addToCurrentDuration(this.state.userId, timerDuration);
+    const focusedToday = await this.service.addToCurrentDuration(timerDuration);
 
     this.setState({
       timerStartedAt: null,
@@ -63,11 +64,13 @@ class App extends React.Component {
     KeepAwake.activate();
   };
 
-  async componentDidMount() {
-    const focusedToday = await readCurrentDuration();
+  // async componentDidMount() {
+  //   console.log(this.service, 'here service')
+  //  // const focusedToday = await this.service.readCurrentDuration();
 
-    this.setState({ focusedToday })
-  };
+
+  //   this.setState({ focusedToday })
+  // };
 
   handleClickChartEntry = () => {
     this.setState({
@@ -82,10 +85,14 @@ class App extends React.Component {
   }
 
   handleSignin = (userInfo) => {
+    const userId = userInfo.user.id
+
     this.setState({
       signedIn: true,
       userId: userInfo.user.id
     })
+
+    this.service = new Service(new Storage(userId))
   }
 
   handleClickSettingPage = () => {

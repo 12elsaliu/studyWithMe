@@ -3,22 +3,31 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const formatDate = date => DateTime.fromJSDate(date).toFormat('yyyy-LL-dd')
 
-export async function readDuration(userId, date) {
-  const key = formatDate(date) + userId
-  const duration = await AsyncStorage.getItem(key);
 
-  if (!duration) {
-    return 0;
+export class Storage {
+  constructor(userId) {
+    this.userId = userId
+  }
+  async readDuration(date) {
+    const key = formatDate(date) + this.userId
+    const duration = await AsyncStorage.getItem(key);
+
+    if (!duration) {
+      return 0;
+    }
+
+    return Number.parseInt(duration, 10);
   }
 
-  return Number.parseInt(duration, 10);
+
+  async writeDuration(date, duration) {
+    const key = formatDate(date) + this.userId
+    await AsyncStorage.setItem(key, String(duration));
+  };
+
 }
 
 
-export async function writeDuration(userId, date, duration) {
-  const key = formatDate(date) + userId
-  await AsyncStorage.setItem(key, String(duration));
-};
-
-
-
+//const storage = new Storage(userId);
+// storage.readDuration(new Date())
+// storage.writeDuration(date, duration)

@@ -1,4 +1,4 @@
-import { loadHistoryDuration } from '../../service';
+import { Service } from '../../service';
 import { BarChart } from 'react-native-chart-kit';
 import React from 'react';
 import { Dimensions, View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
@@ -6,6 +6,7 @@ import image from '../../images/exit.png';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import { DateTime } from 'luxon';
+
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -88,14 +89,17 @@ const styles = StyleSheet.create({
 });
 
 export class SevenDay extends React.Component {
+
   state = {
     daysList: [],
     durationList: [],
     week: 0
   }
 
+
   async componentDidMount() {
-    const { daysList, durationList } = await loadHistoryDuration(this.props.userId, 7, this.state.week);
+    this.service = new Service(new Storage(this.props.userId))
+    const { daysList, durationList } = await this.service.loadHistoryDuration(7, this.state.week);
     this.setState({
       daysList,
       durationList,
@@ -105,7 +109,7 @@ export class SevenDay extends React.Component {
 
   handleBackWeek = async () => {
     let backWeek = this.state.week + 1;
-    const { daysList, durationList } = await loadHistoryDuration(this.props.userId, 7, backWeek);
+    const { daysList, durationList } = await this.service.loadHistoryDuration(7, backWeek);
     this.setState({
       daysList,
       durationList,
@@ -116,7 +120,7 @@ export class SevenDay extends React.Component {
   handleForwardWeek = async () => {
     if (this.state.week > 0) {
       let forwardWeek = this.state.week - 1
-      const { daysList, durationList } = await loadHistoryDuration(this.props.userId, 7, forwardWeek);
+      const { daysList, durationList } = await this.service.loadHistoryDuration(7, forwardWeek);
       this.setState({
         daysList,
         durationList,

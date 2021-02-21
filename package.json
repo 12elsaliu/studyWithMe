@@ -9,6 +9,7 @@
     "test": "jest",
     "lint": "eslint ."
   },
+  "type": "module",
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
     "@react-native-community/art": "^1.2.0",
