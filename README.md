@@ -13,4 +13,12 @@ Major technologies:
 * App has support for more than one user, user’s login implemented using Google SignIn 
 * Classes with main business logic covered with unit tests using Jest testing framework 4. Operations with time implemented using Luxon library
 
-![StartingPage](/images/watingToStart.png)
+Examples of App Screenshots:
+1. Wait to start page
+<img src="/images/watingToStart.png" alt="drawing" width="200"/>
+
+1. Time running page
+<img src="/images/runningTimer.png" alt="drawing" width="200"/>
+
+1. View history page
+<img src="/images/historicalRecords.png" alt="drawing" width="200"/>
