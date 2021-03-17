@@ -6,6 +6,7 @@ import image from '../../images/exit.png';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import { DateTime } from 'luxon';
+import { Storage } from '../../storage'
 
 
 const screenWidth = Dimensions.get("window").width;

@@ -25,12 +25,14 @@ export class SignOut extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={this.signOut}>
+
+      <TouchableOpacity onPress={this.signOut}>
+        <View style={styles.container}>
           <Image source={signOutIcon} style={styles.signOutIcon} />
           <Text style={styles.text}>Sign Out</Text>
-        </TouchableOpacity>
-      </View>
+        </View>
+      </TouchableOpacity>
+
     )
   }
 }
@@ -48,9 +50,9 @@ const styles = StyleSheet.create({
     left: 40,
     top: 120,
     flexDirection: 'row',
-    backgroundColor: 'blue',
     flexWrap: 'wrap',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    flexDirection: 'row'
 
   },
 
@@ -58,6 +60,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
     color: 'black',
+    position: 'relative',
+    left: 10,
+    top: 20
+
     // left: 70,
     // top: 10
   },

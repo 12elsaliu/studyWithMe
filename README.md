@@ -13,3 +13,4 @@ Major technologies:
 * App has support for more than one user, user’s login implemented using Google SignIn 
 * Classes with main business logic covered with unit tests using Jest testing framework 4. Operations with time implemented using Luxon library
 
+![StartingPage](/images/watingToStart.png)

@@ -10,33 +10,37 @@ export class Setting extends React.Component {
     user: true
   }
 
-  // handleClickOnSignOut = () => {
-  //   this.setState({ user: false })
-  // }
-
   render() {
     if (this.state.user) {
       return (
         <>
-          <View style={styles.exitContainer} >
-            < TouchableOpacity onPress={this.props.backToStartPage}>
-              <Image
-                source={exit}
-                style={styles.exitButton}
-              />
-            </TouchableOpacity>
+          <View>
+            <View style={styles.exitContainer} >
+              < TouchableOpacity onPress={this.props.backToStartPage}>
+                <Image
+                  source={exit}
+                  style={styles.exitButton}
+                />
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.settingItems}>
+              <View style={styles.entryContainer}>
+                < TouchableOpacity onPress={this.props.goToChartPage}>
+                  <Image
+                    source={entry}
+                    style={styles.iconStyle}
+                  />
+                  <Text style={styles.text} >Chart</Text>
+                </TouchableOpacity>
+              </View>
+
+              <SignOut isSignOut={this.props.isSignOut} />
+            </View>
+
+
           </View>
 
-          <View style={styles.entryContainer}>
-            < TouchableOpacity onPress={this.props.goToChartPage}>
-              <Image
-                source={entry}
-                style={styles.iconStyle}
-              />
-            </TouchableOpacity>
-          </View>
-
-          <SignOut isSignOut={this.props.isSignOut} />
         </>
       )
     } else {
@@ -55,14 +59,28 @@ const styles = StyleSheet.create({
     zIndex: 100
   },
   entryContainer: {
-    top: 100,
+    top: 80,
     left: 60,
     height: 30,
+    flexDirection: 'row',
+
 
   },
   iconStyle: {
     position: 'absolute',
-    width: 40,
-    height: 40
+    width: 45,
+    height: 50,
+    right: 20
   },
+  text: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: 'black',
+    position: 'relative',
+    left: 35,
+
+  },
+  settingItems: {
+    top: 140,
+  }
 })
