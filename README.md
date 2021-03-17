@@ -17,8 +17,10 @@ Examples of App Screenshots:
 1. Wait to start page
 <img src="/images/watingToStart.png" alt="drawing" width="200"/>
 
-1. Time running page
+
+2. Time running page
 <img src="/images/runningTimer.png" alt="drawing" width="200"/>
 
-1. View history page
+
+3. View history page
 <img src="/images/historicalRecords.png" alt="drawing" width="200"/>
