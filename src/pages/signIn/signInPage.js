@@ -4,7 +4,7 @@ import {
   statusCodes,
 } from '@react-native-community/google-signin';
 import React from 'react';
-import { Image, StyleSheet, Text } from 'react-native';
+import { Image, View, StyleSheet, Text } from 'react-native';
 import logo from '../../images/logo.jpg';
 
 GoogleSignin.configure();
@@ -51,14 +51,17 @@ export class SignIn extends React.Component {
   render() {
     return (
       <>
+        <View style={styles.container}>
+          <Text style={{ fontSize: 20, color: 'black', fontWeight: 'bold' }}>Let's get started !</Text>
+          <GoogleSigninButton
+            style={{ width: 192, height: 48 }}
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Dark}
+            onPress={() => this.signIn(false)}
+            disabled={this.state.isSigninInProgress} />
 
-        <Text style={{ fontSize: 20, color: 'black', top: '55%', left: '29%' }}>Let's get started !</Text>
-        <GoogleSigninButton
-          style={{ width: 192, height: 48, top: '60%', left: '25%' }}
-          size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={() => this.signIn(false)}
-          disabled={this.state.isSigninInProgress} />
+        </View>
+
       </>
     )
 
@@ -66,7 +69,16 @@ export class SignIn extends React.Component {
 
 }
 
+
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    top: '55%',
+    height: 100,
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+
   logo: {
     width: 10,
     height: 10,
