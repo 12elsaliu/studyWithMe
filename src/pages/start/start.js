@@ -1,14 +1,9 @@
 import React from 'react';
-import {Image, StyleSheet, View, TouchableOpacity} from 'react-native';
-import image from '../../images/start.jpg';
+import {Image, StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import image from '../../images/start.png';
 import setting from '../../images/setting.png';
 
 const styles = StyleSheet.create({
-  pauseButton: {
-    width: 160,
-    height: 160,
-  },
-
   container: {
     position: 'absolute',
     top: 0,
@@ -52,8 +47,9 @@ export class Start extends React.Component {
 
         <View style={styles.container}>
           <TouchableOpacity onPress={this.props.start}>
-            <Image source={image} style={styles.pauseButton} />
+            <Image source={image} />
           </TouchableOpacity>
+          <Text>Tap the clock to start</Text>
         </View>
       </>
     );
