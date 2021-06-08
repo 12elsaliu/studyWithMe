@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, ImageBackground, View, Text} from 'react-native';
 
 import {
   Header,
@@ -186,47 +186,36 @@ class App extends React.Component {
         </>
       );
     } else {
-      return <>{mainFunction()}</>;
+      return (
+        <View style={styles.container}>
+          <ImageBackground
+            source={require('./images/back2.jpg')}
+            style={styles.image}>
+            {mainFunction()}
+          </ImageBackground>
+        </View>
+      );
     }
   }
 }
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
+    flexDirection: 'column',
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  image: {
+    flex: 1,
+    // remove width and height to override fixed static size
+    width: null,
+    height: null,
   },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  text: {
+    color: 'white',
+    fontSize: 42,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: '#000000a0',
   },
 });
 
