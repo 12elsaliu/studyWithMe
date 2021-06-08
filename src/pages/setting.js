@@ -3,6 +3,7 @@ import {SignOut} from './../components/signOut';
 import {Start} from '../pages/start/start';
 import exit from '../images/exit.png';
 import ButtonOne from '../components/ButtonOne';
+import Exit from '../components/Exit';
 import {
   View,
   StyleSheet,
@@ -13,7 +14,6 @@ import {
   Dimensions,
 } from 'react-native';
 import entry from '../images/chartEntry.jpg';
-
 var {height, width} = Dimensions.get('window');
 
 export class Setting extends React.Component {
@@ -27,9 +27,7 @@ export class Setting extends React.Component {
         <>
           <View>
             <View>
-              <TouchableOpacity onPress={this.props.backToStartPage}>
-                <Image source={exit} style={styles.exitButton} />
-              </TouchableOpacity>
+              <Exit onPress={this.props.backToStartPage} />
             </View>
 
             <View style={{marginTop: height * 0.25}}>
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
   exitButton: {
     width: 35,
     height: 35,
-    marginTop: height * 0.05,
+    // margin: height * 0.05,
     // top: 35,
     // left: 10,
   },

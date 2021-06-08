@@ -1,9 +1,9 @@
-import { Service } from './service.js';
+import {Service} from './service.js';
 
 describe('Service layer', () => {
   test('addToCurrentDuration method', async () => {
     const storage = {
-      writeDuration() { },
+      writeDuration() {},
       readDuration() {
         return 800000;
       },
@@ -14,7 +14,6 @@ describe('Service layer', () => {
     const duration = await service.addToCurrentDuration(500);
 
     expect(duration).toBe(800500);
-
   });
 
   test('loadHistoryDuration method', async () => {

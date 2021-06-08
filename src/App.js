@@ -81,6 +81,7 @@ class App extends React.Component {
   };
 
   handleClickChartExit = () => {
+    this.setState;
     this.setState({
       chartPage: null,
     });
