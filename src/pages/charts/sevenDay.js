@@ -1,6 +1,8 @@
 import {Service} from '../../service';
 import {BarChart} from 'react-native-chart-kit';
 import React from 'react';
+import Exit from '../../components/Exit';
+
 import {
   Dimensions,
   View,
@@ -14,6 +16,8 @@ import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import {DateTime} from 'luxon';
 import {Storage} from '../../storage';
+
+var {height, width} = Dimensions.get('window');
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -68,7 +72,7 @@ const styles = StyleSheet.create({
   exitContainer: {
     position: 'absolute',
     top: 7,
-    left: 5,
+    left: 10,
   },
 
   chartContainer: {
@@ -90,6 +94,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     bottom: 0,
     justifyContent: 'center',
+  },
+  chart: {
+    marginTop: '50%',
   },
 });
 
@@ -153,38 +160,68 @@ export class SevenDay extends React.Component {
       ],
     };
     return (
-      <View style={styles.wholeContainer}>
-        <View style={styles.exitContainer}>
-          <TouchableOpacity onPress={this.props.backToStartPage}>
-            <Image source={image} style={styles.exitButton} />
-          </TouchableOpacity>
-        </View>
+      <View>
+        <Exit onPress={this.props.backToStartPage} />
+        <View style={styles.chart}>
+          <View style={styles.arrowContainer}>
+            <TouchableOpacity onPress={this.handleBackWeek}>
+              <Image source={leftArrow} style={styles.leftArrow} />
+            </TouchableOpacity>
 
-        <View style={styles.arrowContainer}>
-          <TouchableOpacity onPress={this.handleBackWeek}>
-            <Image source={leftArrow} style={styles.leftArrow} />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={this.handleForwardWeek}>
+              <Image source={rightArrow} style={styles.rightArrow} />
+            </TouchableOpacity>
+          </View>
 
-          <TouchableOpacity onPress={this.handleForwardWeek}>
-            <Image source={rightArrow} style={styles.rightArrow} />
-          </TouchableOpacity>
-        </View>
+          <View style={styles.chartContainer}>
+            <Text style={styles.text}>7 Day Summary (hours)</Text>
+            <BarChart
+              data={data}
+              width={screenWidth}
+              height={220}
+              // yAxisLabel=""
+              chartConfig={chartConfig}
+              verticalLabelRotation={20}>
+              <Image source={leftArrow} style={styles.leftArrow} />
 
-        <View style={styles.chartContainer}>
-          <Text style={styles.text}>7 Day Summary (hours)</Text>
-          <BarChart
-            data={data}
-            width={screenWidth}
-            height={220}
-            // yAxisLabel=""
-            chartConfig={chartConfig}
-            verticalLabelRotation={20}>
-            <Image source={leftArrow} style={styles.leftArrow} />
-
-            <Image source={rightArrow} style={styles.rightArrow} />
-          </BarChart>
+              <Image source={rightArrow} style={styles.rightArrow} />
+            </BarChart>
+          </View>
         </View>
       </View>
+
+      // <View style={styles.wholeContainer}>
+      //   <View style={styles.exitContainer}>
+      //     <TouchableOpacity onPress={this.props.backToStartPage}>
+      //       <Image source={image} style={styles.exitButton} />
+      //     </TouchableOpacity>
+      //   </View>
+
+      //   <View style={styles.arrowContainer}>
+      //     <TouchableOpacity onPress={this.handleBackWeek}>
+      //       <Image source={leftArrow} style={styles.leftArrow} />
+      //     </TouchableOpacity>
+
+      //     <TouchableOpacity onPress={this.handleForwardWeek}>
+      //       <Image source={rightArrow} style={styles.rightArrow} />
+      //     </TouchableOpacity>
+      //   </View>
+
+      //   <View style={styles.chartContainer}>
+      //     <Text style={styles.text}>7 Day Summary (hours)</Text>
+      //     <BarChart
+      //       data={data}
+      //       width={screenWidth}
+      //       height={220}
+      //       // yAxisLabel=""
+      //       chartConfig={chartConfig}
+      //       verticalLabelRotation={20}>
+      //       <Image source={leftArrow} style={styles.leftArrow} />
+
+      //       <Image source={rightArrow} style={styles.rightArrow} />
+      //     </BarChart>
+      //   </View>
+      // </View>
     );
   }
 }

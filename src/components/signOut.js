@@ -1,8 +1,5 @@
 import React from 'react';
 import {GoogleSignin} from '@react-native-community/google-signin';
-import {View, StyleSheet, Image, TouchableOpacity, Text} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import signOutIcon from '../images/signOut.png';
 import ButtonOne from './ButtonOne';
 
 export class SignOut extends React.Component {
@@ -14,10 +11,8 @@ export class SignOut extends React.Component {
     try {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
+    } finally {
       this.props.isSignOut();
-      // this.props.clickSignOut()//add into parents components
-    } catch (error) {
-      console.error(error);
     }
   };
 
@@ -35,19 +30,3 @@ export class SignOut extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  signOutIcon: {
-    width: 45,
-    height: 50,
-  },
-
-  container: {},
-
-  text: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: 'black',
-    alignSelf: 'center',
-  },
-});

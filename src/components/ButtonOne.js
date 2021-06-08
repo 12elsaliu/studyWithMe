@@ -7,7 +7,7 @@ TouchableOpacity.defaultProps = {activeOpacity: 0.8};
 const ButtonOne = ({onPress, title}) => (
   <TouchableOpacity onPress={onPress}>
     <LinearGradient
-      colors={['#5B8899', '#91B2BE']}
+      colors={['#B9B7BD', '#EEEDE7']}
       style={styles.appButtonContainer}>
       <Text style={styles.appButtonText}>{title}</Text>
     </LinearGradient>
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   },
   appButtonText: {
     fontSize: 18,
-    color: '#fff',
-    fontWeight: 'bold',
+    color: 'black',
+    // fontWeight: 'bold',
     alignSelf: 'center',
     textTransform: 'uppercase',
   },
