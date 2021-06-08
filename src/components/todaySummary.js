@@ -1,14 +1,13 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 
 export class TodaySummary extends React.Component {
-
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Today Focused {this.props.duration}</Text>
       </View>
-    )
+    );
   }
 }
 
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
     right: 10,
     borderRadius: 5,
     height: 50,
-    width: 300
+    width: 300,
   },
   button: {
     height: 40,

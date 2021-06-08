@@ -2,7 +2,7 @@ import React from 'react';
 import {SignOut} from './../components/signOut';
 import {Start} from '../pages/start/start';
 import exit from '../images/exit.png';
-import LinearGradient from 'react-native-linear-gradient';
+import ButtonOne from '../components/ButtonOne';
 import {
   View,
   StyleSheet,
@@ -10,20 +10,11 @@ import {
   TouchableOpacity,
   Text,
   Button,
+  Dimensions,
 } from 'react-native';
 import entry from '../images/chartEntry.jpg';
 
-TouchableOpacity.defaultProps = {activeOpacity: 0.8};
-
-const AppButton = ({onPress, title}) => (
-  <TouchableOpacity onPress={onPress}>
-    <LinearGradient
-      colors={['#5B8899', '#91B2BE']}
-      style={styles.appButtonContainer}>
-      <Text style={styles.appButtonText}>{title}</Text>
-    </LinearGradient>
-  </TouchableOpacity>
-);
+var {height, width} = Dimensions.get('window');
 
 export class Setting extends React.Component {
   state = {
@@ -34,16 +25,20 @@ export class Setting extends React.Component {
     if (this.state.user) {
       return (
         <>
-          <View style={{backgroundColor: 'grey'}}>
+          <View>
             <View>
               <TouchableOpacity onPress={this.props.backToStartPage}>
                 <Image source={exit} style={styles.exitButton} />
               </TouchableOpacity>
             </View>
 
-            <View>
-              <AppButton title="History Review" size="sm" />
-              <AppButton title="Sign Out" size="sm" />
+            <View style={{marginTop: height * 0.25}}>
+              <ButtonOne
+                title="History Review"
+                onPress={this.props.goToChartPage}
+                size="sm"
+              />
+              <SignOut isSignOut={this.props.isSignOut} />
             </View>
           </View>
 
@@ -71,6 +66,7 @@ const styles = StyleSheet.create({
   exitButton: {
     width: 35,
     height: 35,
+    marginTop: height * 0.05,
     // top: 35,
     // left: 10,
   },
@@ -92,23 +88,4 @@ const styles = StyleSheet.create({
   //   flexDirection: 'column',
   //   justifyContent: 'flex-start',
   // },
-  screenContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  appButtonContainer: {
-    elevation: 8,
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    margin: 5,
-  },
-  appButtonText: {
-    fontSize: 18,
-    color: '#fff',
-    fontWeight: 'bold',
-    alignSelf: 'center',
-    textTransform: 'uppercase',
-  },
 });

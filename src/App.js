@@ -17,21 +17,29 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import {Start} from './src/pages/start/start';
-import {Time} from './src/pages/timer/timer';
-import {TodaySummary} from './src/components/todaySummary';
+import {Start} from './pages/start/start';
+import {Time} from './pages/timer/timer';
+import {TodaySummary} from './components/todaySummary';
 import Duration from 'luxon/src/duration.js';
-import {Service} from './src/service';
-import {SevenDay} from './src/pages/charts/sevenDay';
+import {Service} from './service';
+import {SevenDay} from './pages/charts/sevenDay';
 import KeepAwake from 'react-native-keep-awake';
-import {SignIn} from './src/pages/signIn/signInPage';
-import {Setting} from './src/pages/setting';
-import {Storage} from './src/storage';
+import {SignIn} from './pages/signIn/signInPage';
+import {Setting} from './pages/setting';
+import {Storage} from './storage';
 
 function formatFocusedToday(ms) {
   return Duration.fromMillis(ms).toFormat('hh:mm:ss');
 }
 
+const initialState = {
+  timerStartedAt: null,
+  focusedToday: 0,
+  chartPage: null,
+  signedIn: false,
+  settingPage: null,
+  userId: undefined,
+};
 class App extends React.Component {
   state = {
     timerStartedAt: null,
@@ -78,15 +86,22 @@ class App extends React.Component {
     });
   };
 
-  handleSignin = (userInfo) => {
+  handleSignin = async (userInfo) => {
     const userId = userInfo.user.id;
 
     this.setState({
       signedIn: true,
       userId: userInfo.user.id,
     });
-
     this.service = new Service(new Storage(userId));
+    this.handleUpdate();
+  };
+
+  handleUpdate = async () => {
+    const focusedToday = await this.service.readCurrentDuration();
+    this.setState({
+      focusedToday,
+    });
   };
 
   handleClickSettingPage = () => {
@@ -102,9 +117,7 @@ class App extends React.Component {
   };
 
   handleSignOut = () => {
-    this.setState({
-      userId: undefined,
-    });
+    this.setState(initialState);
   };
 
   render() {
