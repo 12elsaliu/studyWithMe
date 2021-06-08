@@ -4,7 +4,7 @@ import {
   statusCodes,
 } from '@react-native-community/google-signin';
 import React from 'react';
-import {Image, View, StyleSheet, Text} from 'react-native';
+import {Image, View, StyleSheet, Text, ImageBackground} from 'react-native';
 import logo from '../../images/logo.png';
 
 GoogleSignin.configure();
@@ -47,11 +47,9 @@ export class SignIn extends React.Component {
 
   render() {
     return (
-      <>
-        {/* //   <Image
-      //     source={require('../../images/back1.jpg')}
-      //     style={styles.backgroundImage}
-      //   /> */}
+      <ImageBackground
+        source={require('../../images/back1.jpg')}
+        style={styles.backgroundImage}>
         <Image source={logo} style={styles.logo} />
         <View style={styles.container}>
           <Text style={styles.start}>
@@ -65,7 +63,7 @@ export class SignIn extends React.Component {
             disabled={this.state.isSigninInProgress}
           />
         </View>
-      </>
+      </ImageBackground>
     );
   }
 }
@@ -90,6 +88,8 @@ const styles = StyleSheet.create({
   },
   backgroundImage: {
     flex: 1,
-    resizeMode: 'cover', // or 'stretch'
+    // remove width and height to override fixed static size
+    width: null,
+    height: null,
   },
 });
