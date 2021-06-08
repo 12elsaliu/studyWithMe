@@ -22,14 +22,14 @@ var {height, width} = Dimensions.get('window');
 const screenWidth = Dimensions.get('window').width;
 
 const chartConfig = {
-  backgroundGradientFrom: 'black',
-  backgroundGradientFromOpacity: 0,
-  backgroundGradientTo: 'black',
-  backgroundGradientToOpacity: 0,
-  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+  backgroundGradientFromOpacity: 0.1,
+  backgroundGradientFrom: '#A3EBB1',
+  backgroundGradientTo: '#76B947',
+  backgroundGradientToOpacity: 0.15,
   strokeWidth: 2, // optional, default 3
   barPercentage: 0.5,
   useShadowColorFromDataset: false, // optional
+  color: (opacity = 1) => `rgba(0,0,0, ${opacity})`,
 };
 
 const styles = StyleSheet.create({
@@ -152,7 +152,6 @@ export class SevenDay extends React.Component {
       labels: this.state.daysList.map((date) =>
         DateTime.fromJSDate(date).toFormat('LL-dd'),
       ),
-
       datasets: [
         {
           data: this.state.durationList,

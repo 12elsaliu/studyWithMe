@@ -140,6 +140,7 @@ class App extends React.Component {
           />
           <TodaySummary
             duration={formatFocusedToday(this.state.focusedToday)}
+            chart={this.handleClickChartEntry}
           />
         </>
       );

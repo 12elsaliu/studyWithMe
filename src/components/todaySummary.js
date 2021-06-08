@@ -1,11 +1,16 @@
 import React from 'react';
 import {StyleSheet, View, Text} from 'react-native';
+import ButtonOne from './ButtonOne';
 
 export class TodaySummary extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.text}>Today Focused {this.props.duration}</Text>
+      <View style={{top: '80%'}}>
+        <ButtonOne
+          title={`You've focused for ${this.props.duration} today`}
+          onPress={this.props.chart}
+          size="sm"
+        />
       </View>
     );
   }
