@@ -11,9 +11,6 @@ import {
   Button,
 } from 'react-native';
 import entry from '../images/chartEntry.jpg';
-import Icon from 'react-native-vector-icons/FontAwesome';
-const myIcon = <Icon name="rocket" size={30} color="#900" />;
-Icon.loadFont();
 
 export class Setting extends React.Component {
   state = {
@@ -30,12 +27,7 @@ export class Setting extends React.Component {
             </TouchableOpacity>
           </View>
 
-          <Button variant="primary" size="lg" title="test" block>
-            Block level button
-          </Button>
-
           <View style={styles.settingItems}>
-            {myIcon}
             <View style={styles.entryContainer}>
               <TouchableOpacity onPress={this.props.goToChartPage}>
                 <Text style={styles.text}>
