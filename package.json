@@ -16,6 +16,7 @@
     "luxon": "^1.25.0",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-button": "^3.0.1",
     "react-native-chart-kit": "^6.10.0",
     "react-native-flip-timer": "0.0.5",
     "react-native-keep-awake": "^4.0.0",
