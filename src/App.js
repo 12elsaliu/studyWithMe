@@ -126,9 +126,9 @@ class App extends React.Component {
       const timerStartedPage = (
         <>
           <Time onStop={this.handleClickStop} />
-          <TodaySummary
+          {/* <TodaySummary
             duration={formatFocusedToday(this.state.focusedToday)}
-          />
+          /> */}
         </>
       );
 

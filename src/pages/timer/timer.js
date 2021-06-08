@@ -33,8 +33,8 @@ export class Time extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: 'white',
+    // backgroundColor: 'white',
+    top: '40%',
     alignItems: 'center',
     justifyContent: 'center',
   },
