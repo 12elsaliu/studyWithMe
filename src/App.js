@@ -132,11 +132,20 @@ class App extends React.Component {
             <Text
               style={{
                 top: '20%',
-                textAlign: 'right',
-                width: '50%',
-                left: '40%',
+                textAlign: 'center',
+                width: '60%',
+                left: '35%',
               }}>
-              R2-D3 will be with you for the first 50 hours study journey.
+              R2-D3 will be with you for the first 50 hours study journey
+            </Text>
+            <Text
+              style={{
+                top: '20%',
+                textAlign: 'right',
+                width: '60%',
+                left: '35%',
+              }}>
+              (unlock other characters after 50h)
             </Text>
             <Time onStop={this.handleClickStop} />
             <View style={{flexDirection: 'column'}}>
