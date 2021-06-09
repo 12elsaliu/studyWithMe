@@ -136,7 +136,7 @@ class App extends React.Component {
                 width: '60%',
                 left: '35%',
               }}>
-              R2-D3 will be with you for the first 50 hours study journey
+              R2-D3 will accompany you for the first 50 hours study journey
             </Text>
             <Text
               style={{
