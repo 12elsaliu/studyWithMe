@@ -1,71 +1,32 @@
 import React from 'react';
-import { GoogleSignin } from '@react-native-community/google-signin';
-import { View, StyleSheet, Image, TouchableOpacity, Text, ImageBackground } from 'react-native';
-import signOutIcon from '../images/signOut.png';
-
-
-
-
+import {GoogleSignin} from '@react-native-community/google-signin';
+import ButtonOne from './ButtonOne';
 
 export class SignOut extends React.Component {
   state = {
-    user: true
-  }
+    user: true,
+  };
 
   signOut = async () => {
     try {
       await GoogleSignin.revokeAccess();
       await GoogleSignin.signOut();
+    } finally {
       this.props.isSignOut();
-      // this.props.clickSignOut()//add into parents components
-    } catch (error) {
-      console.error(error);
     }
   };
 
   render() {
     return (
-
-      <TouchableOpacity onPress={this.signOut}>
-        <View style={styles.container}>
-          <Image source={signOutIcon} style={styles.signOutIcon} />
-          <Text style={styles.text}>Sign Out</Text>
-        </View>
-      </TouchableOpacity>
-
-    )
+      // <TouchableOpacity onPress={this.signOut}>
+      //   <View style={styles.container}>
+      //     <Text style={styles.text}>
+      //       <Image source={signOutIcon} style={styles.signOutIcon} />
+      //       Sign Out
+      //     </Text>
+      //   </View>
+      // </TouchableOpacity>
+      <ButtonOne title="Sign Out" onPress={this.signOut} size="sm" />
+    );
   }
 }
-
-
-
-const styles = StyleSheet.create({
-  signOutIcon: {
-    // position: 'absolute',
-    width: 45,
-    height: 50
-  },
-
-  container: {
-    left: 40,
-    top: 120,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems: 'flex-start',
-    flexDirection: 'row'
-
-  },
-
-  text: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    color: 'black',
-    position: 'relative',
-    left: 10,
-    top: 20
-
-    // left: 70,
-    // top: 10
-  },
-
-})

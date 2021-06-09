@@ -4,8 +4,8 @@ import {
   statusCodes,
 } from '@react-native-community/google-signin';
 import React from 'react';
-import { Image, StyleSheet, Text } from 'react-native';
-import logo from '../../images/logo.jpg';
+import {Image, View, StyleSheet, Text, ImageBackground} from 'react-native';
+import logo from '../../images/logo.png';
 
 GoogleSignin.configure();
 
@@ -13,27 +13,26 @@ export class SignIn extends React.Component {
   state = {
     userInfo: null,
     isSigninInProgress: false,
-  }
+  };
 
   signIn = async (silent) => {
-    console.log('----->', silent)
+    console.log('----->', silent);
     try {
       // await GoogleSignin.hasPlayServices();
       const userInfo = silent
         ? await GoogleSignin.signInSilently()
         : await GoogleSignin.signIn();
-      this.setState({ userInfo });
-      this.props.handleSignin(userInfo)//pass value to the parent
+      this.setState({userInfo});
+      this.props.handleSignin(userInfo); //pass value to the parent
     } catch (error) {
-      console.log({ silent, error });
+      console.log({silent, error});
       if (error.code === statusCodes.SIGN_IN_REQUIRED) {
-
       }
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
       } else if (error.code === statusCodes.IN_PROGRESS) {
         // operation (e.g. sign in) is in progress already
-        this.setState({ isSigninInProgress: true })
+        this.setState({isSigninInProgress: true});
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         // play services not available or outdated
       } else {
@@ -42,36 +41,55 @@ export class SignIn extends React.Component {
     }
   };
 
-
   componentDidMount = async () => {
-    await this.signIn(true)
+    await this.signIn(true);
   };
-
 
   render() {
     return (
-      <>
-
-        <Text style={{ fontSize: 20, color: 'black', top: '55%', left: '29%' }}>Let's get started !</Text>
-        <GoogleSigninButton
-          style={{ width: 192, height: 48, top: '60%', left: '25%' }}
-          size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={() => this.signIn(false)}
-          disabled={this.state.isSigninInProgress} />
-      </>
-    )
-
+      <ImageBackground
+        source={require('../../images/back1.jpg')}
+        style={styles.backgroundImage}>
+        <Image source={logo} style={styles.logo} />
+        <View style={styles.container}>
+          <Text style={styles.start}>
+            Sign in with Google Account and let's get started.
+          </Text>
+          <GoogleSigninButton
+            style={{width: 192, height: 48}}
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Dark}
+            onPress={() => this.signIn(false)}
+            disabled={this.state.isSigninInProgress}
+          />
+        </View>
+      </ImageBackground>
+    );
   }
-
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    top: '20%',
+    height: 100,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+
   logo: {
-    width: 10,
-    height: 10,
-    top: 200,
-    left: '25%',
-    backgroundColor: 'blue'
-  }
-})
+    width: 400,
+    height: 400,
+    top: '20%',
+  },
+  start: {
+    fontSize: 12,
+    color: 'black',
+  },
+  backgroundImage: {
+    flex: 1,
+    // remove width and height to override fixed static size
+    width: null,
+    height: null,
+  },
+});
