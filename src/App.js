@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {StyleSheet, ImageBackground, View, Text} from 'react-native';
+import {StyleSheet, ImageBackground, View, Text, Image} from 'react-native';
 
 import {
   Header,
@@ -27,6 +27,7 @@ import KeepAwake from 'react-native-keep-awake';
 import {SignIn} from './pages/signIn/signInPage';
 import {Setting} from './pages/setting';
 import {Storage} from './storage';
+import robot1 from './images/robot1.png';
 
 function formatFocusedToday(ms) {
   return Duration.fromMillis(ms).toFormat('hh:mm:ss');
@@ -125,7 +126,27 @@ class App extends React.Component {
     const mainFunction = () => {
       const timerStartedPage = (
         <>
-          <Time onStop={this.handleClickStop} />
+          <ImageBackground
+            source={require('./images/back3.jpg')}
+            style={styles.image}>
+            <Text
+              style={{
+                top: '20%',
+                textAlign: 'right',
+                width: '50%',
+                left: '40%',
+              }}>
+              R2-D3 will be with you for the first 50 hours study journey.
+            </Text>
+            <Time onStop={this.handleClickStop} />
+            <View style={{flexDirection: 'column'}}>
+              <Image
+                source={robot1}
+                style={{marginLeft: '10%', marginBottom: '10%'}}
+              />
+            </View>
+          </ImageBackground>
+
           {/* <TodaySummary
             duration={formatFocusedToday(this.state.focusedToday)}
           /> */}
