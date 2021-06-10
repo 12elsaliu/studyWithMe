@@ -51,11 +51,5 @@ describe('Service layer', () => {
     gotHistory.daysList.forEach((day) => {
       expect(day).toEqual(expect.any(Date));
     });
-
-    // console.log(gotHistory)
-    // console.log(expectedHistory)
-    // if (String(gotHistory.durationList) !== String(expectedHistory.durationList)) {
-    //   throw Error('Error with loadHistoryDuration function')
-    // }
   });
 });

@@ -17,16 +17,6 @@ export class SignOut extends React.Component {
   };
 
   render() {
-    return (
-      // <TouchableOpacity onPress={this.signOut}>
-      //   <View style={styles.container}>
-      //     <Text style={styles.text}>
-      //       <Image source={signOutIcon} style={styles.signOutIcon} />
-      //       Sign Out
-      //     </Text>
-      //   </View>
-      // </TouchableOpacity>
-      <ButtonOne title="Sign Out" onPress={this.signOut} size="sm" />
-    );
+    return <ButtonOne title="Sign Out" onPress={this.signOut} size="sm" />;
   }
 }

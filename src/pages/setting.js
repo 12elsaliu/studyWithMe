@@ -68,22 +68,4 @@ const styles = StyleSheet.create({
     // top: 35,
     // left: 10,
   },
-  // entryContainer: {},
-  // iconStyle: {
-  //   width: 45,
-  //   height: 50,
-  // },
-
-  // text: {
-  //   fontSize: 17,
-  //   fontWeight: 'bold',
-  //   color: 'black',
-  //   alignSelf: 'center',
-  // },
-
-  // settingItems: {
-  //   top: '30%',
-  //   flexDirection: 'column',
-  //   justifyContent: 'flex-start',
-  // },
 });

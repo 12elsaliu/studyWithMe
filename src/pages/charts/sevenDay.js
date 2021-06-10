@@ -188,39 +188,6 @@ export class SevenDay extends React.Component {
           </View>
         </View>
       </View>
-
-      // <View style={styles.wholeContainer}>
-      //   <View style={styles.exitContainer}>
-      //     <TouchableOpacity onPress={this.props.backToStartPage}>
-      //       <Image source={image} style={styles.exitButton} />
-      //     </TouchableOpacity>
-      //   </View>
-
-      //   <View style={styles.arrowContainer}>
-      //     <TouchableOpacity onPress={this.handleBackWeek}>
-      //       <Image source={leftArrow} style={styles.leftArrow} />
-      //     </TouchableOpacity>
-
-      //     <TouchableOpacity onPress={this.handleForwardWeek}>
-      //       <Image source={rightArrow} style={styles.rightArrow} />
-      //     </TouchableOpacity>
-      //   </View>
-
-      //   <View style={styles.chartContainer}>
-      //     <Text style={styles.text}>7 Day Summary (hours)</Text>
-      //     <BarChart
-      //       data={data}
-      //       width={screenWidth}
-      //       height={220}
-      //       // yAxisLabel=""
-      //       chartConfig={chartConfig}
-      //       verticalLabelRotation={20}>
-      //       <Image source={leftArrow} style={styles.leftArrow} />
-
-      //       <Image source={rightArrow} style={styles.rightArrow} />
-      //     </BarChart>
-      //   </View>
-      // </View>
     );
   }
 }

@@ -23,7 +23,3 @@ export class Storage {
     await AsyncStorage.setItem(key, String(duration));
   }
 }
-
-//const storage = new Storage(userId);
-// storage.readDuration(new Date())
-// storage.writeDuration(date, duration)
