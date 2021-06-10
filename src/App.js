@@ -68,13 +68,6 @@ class App extends React.Component {
     KeepAwake.activate();
   };
 
-  // async componentDidMount() {
-  //   console.log(this.service, 'here service')
-  //  // const focusedToday = await this.service.readCurrentDuration();
-
-  //   this.setState({ focusedToday })
-  // };
-
   handleClickChartEntry = () => {
     this.setState({
       chartPage: true,
@@ -155,10 +148,6 @@ class App extends React.Component {
               />
             </View>
           </ImageBackground>
-
-          {/* <TodaySummary
-            duration={formatFocusedToday(this.state.focusedToday)}
-          /> */}
         </>
       );
 
