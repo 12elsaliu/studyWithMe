@@ -17,7 +17,7 @@ Project Functionalities:
 * Check up on historical summary of daily records
 
 Major technologies: 
-* iOS application based on React Native framework
+* Mobile application based on React Native framework
 * User’s time logs stored on device locally, using Async-Storage 
 * App has support for more than one user, user’s login implemented using Google SignIn 
 * Classes with main business logic covered with unit tests using Jest testing framework 
