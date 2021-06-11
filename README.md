@@ -1,5 +1,5 @@
 # studyWithMe
-[App Demo video (https://youtu.be/Xr9pD2b5nsI)
+[App Demo video (https://youtu.be/Xr9pD2b5nsI)]
 
 Examples of App Screenshots:
 1. Log in and starting page.
