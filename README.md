@@ -15,11 +15,10 @@ Major technologies:
 * Operations with time implemented using Luxon library
 
 Examples of App Screenshots:
-1. Log in and starting page.
-<img src="/images/studyWithMe2.JPG" alt="drawing" width="900"/>
-
-
-2. Time running and history records page.
+1. Time running and history records page.
 <img src="/images/studyWithMe3.JPG" alt="drawing" width="900"/>
+
+2. Log in and starting page.
+<img src="/images/studyWithMe2.JPG" alt="drawing" width="900"/>
 
 
