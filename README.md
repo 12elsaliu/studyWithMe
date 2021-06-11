@@ -9,7 +9,7 @@ Examples of App Screenshots:
 <img src="/images/studyWithMe2.JPG" alt="drawing" width="900"/>
 
 Project description: 
-* StudyWthMe is a productivity related mobile application based on React Native framework.  It provides a time tracking system combining with various study mate characters, designed to improve users' productivity while working/studying from home.![Uploading image.png…]()
+* StudyWthMe is a productivity related mobile application based on React Native framework.  It provides a time tracking system combining with various study mate characters, designed to improve users' productivity while working/studying from home.
 
 
 Project Functionalities: 
