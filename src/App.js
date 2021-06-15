@@ -8,24 +8,15 @@
 
 import React from 'react';
 import {StyleSheet, ImageBackground, View, Text, Image} from 'react-native';
-
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-import {Start} from './pages/start/start';
-import {Time} from './pages/timer/timer';
+import {Start} from './containers/start/start';
+import {Time} from './containers/timer/timer';
 import {TodaySummary} from './components/todaySummary';
 import Duration from 'luxon/src/duration.js';
 import {Service} from './service';
-import {SevenDay} from './pages/charts/sevenDay';
+import {SevenDay} from './containers/charts/sevenDay';
 import KeepAwake from 'react-native-keep-awake';
-import {SignIn} from './pages/signIn/signInPage';
-import {Setting} from './pages/setting';
+import {SignIn} from './containers/signIn/signInPage';
+import {Setting} from './containers/setting';
 import {Storage} from './storage';
 import robot1 from './images/robot1.png';
 
@@ -122,22 +113,10 @@ class App extends React.Component {
           <ImageBackground
             source={require('./images/back3.jpg')}
             style={styles.image}>
-            <Text
-              style={{
-                top: '20%',
-                textAlign: 'center',
-                width: '60%',
-                left: '35%',
-              }}>
+            <Text style={styles.robotText}>
               R2-D3 will accompany you for the first 50 hours study journey
             </Text>
-            <Text
-              style={{
-                top: '20%',
-                textAlign: 'right',
-                width: '60%',
-                left: '35%',
-              }}>
+            <Text style={styles.robotMessage}>
               (unlock other characters after 50h)
             </Text>
             <Time onStop={this.handleClickStop} />
@@ -235,6 +214,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     backgroundColor: '#000000a0',
+  },
+  robotText: {
+    top: '20%',
+    textAlign: 'center',
+    width: '60%',
+    left: '35%',
+  },
+  robotMessage: {
+    top: '20%',
+    textAlign: 'right',
+    width: '60%',
+    left: '35%',
   },
 });
 

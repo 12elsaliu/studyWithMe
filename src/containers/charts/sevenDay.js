@@ -11,13 +11,10 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import image from '../../images/exit.png';
 import leftArrow from '../../images/leftArrow.png';
 import rightArrow from '../../images/rightArrow.png';
 import {DateTime} from 'luxon';
 import {Storage} from '../../storage';
-
-var {height, width} = Dimensions.get('window');
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -47,14 +44,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
   },
-  exitButton: {
-    width: 35,
-    height: 35,
-    top: 35,
-    left: 10,
-    zIndex: 100,
-  },
-
   leftArrow: {
     width: 20,
     height: 20,
@@ -68,13 +57,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     left: 25,
   },
-
-  exitContainer: {
-    position: 'absolute',
-    top: 7,
-    left: 10,
-  },
-
   chartContainer: {
     position: 'relative',
     left: 0,
@@ -83,21 +65,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  wholeContainer: {
-    width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-  },
-
   arrowContainer: {
     position: 'relative',
     flexDirection: 'row',
     bottom: 0,
     justifyContent: 'center',
   },
-  chart: {
-    marginTop: '50%',
-  },
+  // chart: {
+  //   marginTop: '50%',
+  // },
 });
 
 export class SevenDay extends React.Component {
